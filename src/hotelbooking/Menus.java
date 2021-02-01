@@ -1,5 +1,6 @@
 package hotelbooking;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Menus {
@@ -42,7 +43,7 @@ public class Menus {
         return userInput;
     }
     
-    public static void switchStartMenu(int userInputStartMenu) {
+    public static void switchStartMenu(int userInputStartMenu) throws SQLException {
         
         switch (userInputStartMenu) {
             case 1:
@@ -58,7 +59,7 @@ public class Menus {
         }
     }
     
-    public static void runHotelBooking() {
+    public static void runHotelBooking() throws SQLException {
         int userInputStartMenu;
         
         printStartMenu();
@@ -100,7 +101,7 @@ public class Menus {
         return userInput;
     }
    
-    private static void switchCustomerMenu(int userInputCustomerMenu) {
+    private static void switchCustomerMenu(int userInputCustomerMenu) throws SQLException {
 
             switch (userInputCustomerMenu) {
                 case 1:
@@ -131,7 +132,7 @@ public class Menus {
         
     }
     
-    public static void runCustomerMenu() {
+    public static void runCustomerMenu() throws SQLException {
         int userInputCustomerMenu;
         boolean continueLoop = true;
         
@@ -179,7 +180,7 @@ public class Menus {
         return userInput;
     }
     
-    private static void switchReceptionistMenu(int userInputReceptionistMenu) {
+    private static void switchReceptionistMenu(int userInputReceptionistMenu) throws SQLException {
         
             switch (userInputReceptionistMenu) {
                 case 1:
@@ -216,7 +217,7 @@ public class Menus {
             }
     }
     
-    public static void runReceptionistMenu() {
+    public static void runReceptionistMenu() throws SQLException {
         int userInputReceptionistMenu;
         boolean continueLoop = true;
 

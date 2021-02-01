@@ -9,7 +9,7 @@ public class HotelBooking {
 
     private static final String url = "jdbc:mysql://localhost:3306/hotel_booking?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String user = "root";
-    private static final String password = "EGET PASSWORD";
+    private static final String password = "Antiloop71";
     private static Statement sqlStatement = null; //Statement skapar ett object men det är  inte instansierat än.
     private static Connection connection = null; //Connection skapar ett object men det är  inte instansierat än.
     private static boolean continueLoop = true;
@@ -28,6 +28,7 @@ public class HotelBooking {
         }
         finally {
             connection.close();
+            System.out.println("Closing Connection to Server");
         }
         
     }
