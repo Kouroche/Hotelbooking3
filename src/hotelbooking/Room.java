@@ -6,6 +6,8 @@ public abstract class Room {
 
    private String type;
    private int price;
+   
+  
 
     public Room(String type, int price) {
         this.type = type;
@@ -33,11 +35,11 @@ public abstract class Room {
         return "Room{" + "type=" + type + ", price=" + price + '}';
     }
    
-   
+  
    
    public abstract void price();
     
-    
+
 }
 
 

@@ -106,26 +106,12 @@ public class HotelBooking {
         }
         
         System.out.println("You Choose room : " + roomchoice + "\n");
-         ResultSet result = sqlStatement.executeQuery("SELECT room_id FROM room WHERE  room_id = " + roomchoice + ";");
+         ResultSet result = sqlStatement.executeQuery("SELECT room_id FROM room WHERE  room_number = " + roomchoice + ";");
          //ResultSet result = sqlStatement.executeQuery("SELECT * FROM " + tableName + ";");
          
-        int columnCount = result.getMetaData().getColumnCount();
-        String[] columnNames = new String[columnCount];
-
-        for (int i = 0; i < columnCount; i++) {​​​​
-            columnNames[i] = result.getMetaData().getColumnName(i + 1);
-        }​​​​
-
-        while (result.next()) {​​​​
-            System.out.println();
-
-            for (String columnName : columnNames) {​​​​
-
-                String value = result.getString(columnName);
-                roomId = Integer.parseInt(value);
-            }​​​​
-        }​​​​
-
+      
+         
+         
          sqlStatement.executeUpdate("UPDATE room SET room_available = 'no' WHERE  room_number = " + roomchoice + ";");
         sqlStatement.executeUpdate("INSERT INTO booking (cust_id, room_id)"
         + "VAlUES (" + customerId + ", " + result + ");");
