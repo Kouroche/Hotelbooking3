@@ -108,10 +108,11 @@ public class Menus {
                     HotelBooking.createAnAccount();
                     break;
                 case 2:
-                    HotelBooking.showRoom();
+                    
                     //Method...
                     break;
                 case 3:
+                    HotelBooking.showRoom();
                     HotelBooking.bookRoom();
                     //Method...
                     break;

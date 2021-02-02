@@ -73,16 +73,32 @@ public class HotelBooking {
     
     public static void bookRoom() throws SQLException{
         int roomchoice=0;
+        int customerId=0;
+        int roomId=0;
+        boolean continueLoop2 = true;
         
-        showRoom();
-        System.out.println("Choose a Room ' Enter 1-4' : ");
+        System.out.println("Enter your Customer Number");
         while (continueLoop) {
             try {
-                roomchoice = Integer.parseInt(sc.nextLine());
-                if (roomchoice >= 1 && roomchoice <= 4) {
+                customerId = Integer.parseInt(sc.nextLine());
+                if (customerId >= 1 && customerId <= 1000) {
                     continueLoop = false;
                 } else {
-                    System.out.println("Wrong Choice !!! You can choose 1-4 ");
+                    System.out.println(" You can only choose 1-1000 ");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Input only numbers.");
+            }
+        }
+        
+        System.out.println("Choose a Room 'Enter the room number: '");
+        while (continueLoop2) {
+            try {
+                roomchoice = Integer.parseInt(sc.nextLine());
+                if (roomchoice >= 1 && roomchoice <= 8) {
+                    continueLoop2 = false;
+                } else {
+                    System.out.println(" You can only choose 1-8 ");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Input only numbers.");
@@ -90,10 +106,33 @@ public class HotelBooking {
         }
         
         System.out.println("You Choose room : " + roomchoice + "\n");
+         ResultSet result = sqlStatement.executeQuery("SELECT room_id FROM room WHERE  room_id = " + roomchoice + ";");
+         //ResultSet result = sqlStatement.executeQuery("SELECT * FROM " + tableName + ";");
+         
+        int columnCount = result.getMetaData().getColumnCount();
+        String[] columnNames = new String[columnCount];
+
+        for (int i = 0; i < columnCount; i++) {​​​​
+            columnNames[i] = result.getMetaData().getColumnName(i + 1);
+        }​​​​
+
+        while (result.next()) {​​​​
+            System.out.println();
+
+            for (String columnName : columnNames) {​​​​
+
+                String value = result.getString(columnName);
+                roomId = Integer.parseInt(value);
+            }​​​​
+        }​​​​
+
+         sqlStatement.executeUpdate("UPDATE room SET room_available = 'no' WHERE  room_number = " + roomchoice + ";");
+        sqlStatement.executeUpdate("INSERT INTO booking (cust_id, room_id)"
+        + "VAlUES (" + customerId + ", " + result + ");");
         
         
-        // Koppla kunden till ett rum
-        
+        System.out.println("Your booking is confirmed\n");
+        System.out.println("We look forward to have you as a guest \n");
         
         
     
@@ -157,7 +196,7 @@ public class HotelBooking {
      
       // Fyll ut varje sträng med whitespaces till max 30 tecken
     private static String PadRight(String string) {
-        int totalStringLength = 30;
+        int totalStringLength = 18;
         int charsToPadd = totalStringLength - string.length();
 
         // incase the string is the same length or longer than our maximum lenght
