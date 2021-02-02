@@ -45,6 +45,7 @@ public class CustMethods {
         }
         System.out.print("Testrad:" + name + " " + phoneNo + "\n");
         
+        
         sqlStatement.executeUpdate("INSERT INTO customer (cust_name, phoneNo) VALUES('" + name + "', " + phoneNo + ");");
         System.out.print("Kunden är registrerad.\n");
         

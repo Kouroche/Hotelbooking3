@@ -70,11 +70,11 @@ public class Menus {
     
     public static void printCustomerMenu() {
         
-        System.out.println("\nWelcome Dear customer!");
+        
         System.out.println("What would you like to do?");
         System.out.println("1. Create an account");
-        System.out.println("2. TEST-write to txt-file");
-        System.out.println("3. TEST-read from txt-file");
+        System.out.println("2. Show Different Room Categories");
+        System.out.println("3. Book a Room");
         System.out.println("4. ");
         System.out.println("5. ");
         System.out.println("6. ");
@@ -105,14 +105,14 @@ public class Menus {
 
             switch (userInputCustomerMenu) {
                 case 1:
-                    CustMethods.createAnAccount();
+                    HotelBooking.createAnAccount();
                     break;
                 case 2:
-                    CustMethods.fileWriterWithUpdates();
+                    HotelBooking.showRoom();
                     //Method...
                     break;
                 case 3:
-                    CustMethods.fileReaderTest();
+                    HotelBooking.bookRoom();
                     //Method...
                     break;
                 case 4:
